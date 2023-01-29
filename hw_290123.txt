@@ -1,0 +1,42 @@
+#!/bin/bash
+
+result=$(date +"%d%m%y")
+
+for run in {1..10}
+do
+touch "$run$result"
+done
+
+
+
+*** komanda crontab -e ***
+15 * * * * /opt/45_46_morning/elina/taskELINA.sh >> /opt/45_46_morning/elina/output.txt
+
+
+
+*** komandi v terminale ***
+1. cd /opt/45_46_morning/elina
+2. nano taskELINA.sh
+3. chmod 744 taskElina.sh
+4. crontab -e
+5. ls
+6. crontab -r
+
+
+
+
+First level: В папке с Вашим именем создайте скрипт taskNAME.sh, где NAME - Ваше имя. 
+Скрипт должен создавать по 10 файлов с порядковым номером и датой создания.  1160218 , 2160218 , 3160218 .. 101602_18
+Создайте в планировщике новое задание, которое должно будет запускать Ваш скрипт Каждые 15 минут. 
+
+
+Что пригодится: 
+date +"%H%M%S" 
+touch
+export EDITOR=nano 
+crontab -l 
+crontab -e 
+http://crontab.guru/
+Если удобно, то вот однострочник, создающий простейший скрипт в /tmp , который надо будет редактировать дальше: 
+echo -e #!/bin/bash\n date\n echo “it works!“ > /tmp/script.sh
+
